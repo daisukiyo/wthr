@@ -8,8 +8,10 @@ const DisplayWeather = (props) => {
     return (
         // view container will act as a component
         <View>
-            {/* text will display the temperature */}
+            {/* text component will display the temperature */}
             <Text>72˚</Text>
+            {/* text component will display the description */}
+            <Text>Partly Cloudy</Text>
         </View>
     )
 }
