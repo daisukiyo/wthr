@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 // import DisplayWeather component
 import DisplayWeather from './components/DisplayWeather'
-
+import { WEATHER_API_KEY } from 'react-native-dotenv'
 
 export default class App extends React.Component {
 
@@ -11,7 +11,7 @@ export default class App extends React.Component {
     super(props)
 
     // this will hold user's location and weather data when loaded
-    this.state = {
+    -this.state = {
       location: null, 
       weather: null
     }
@@ -19,7 +19,7 @@ export default class App extends React.Component {
 
   // load weather information via openweathermap API
   loadweather() {
-    const apiKey = process.env.WEATHER_KEY
+    const apikey = WEATHER_API_KEY  
     const { latitude, longitude } = this.state.location.coords
     const units = 'Imperial'
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}&units=${units}`
@@ -45,12 +45,12 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         {/* Add DisplayWeather Component */}
-        <DisplayWeather/>
+        <DisplayWeather data={this.state.weather}/>
       </View>
     );
   }
 }
-
+  
 const styles = StyleSheet.create({
   container: {
     flex: 1,
